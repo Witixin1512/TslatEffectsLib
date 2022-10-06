@@ -2,6 +2,7 @@
     "schemaVersion": 1,
     "id": "tslateffectslib",
     "version": "${version}",
+  
     "name": "Tslat's Effect Library",
     "description": "A library to make mob effects actually useful",
     "authors": [
@@ -17,10 +18,15 @@
   
     "environment": "*",
     "entrypoints": {
+      "main": [
+        "net.tslat.tslateffectslib.TELFabric"
+      ]
     },
     "mixins": [
-      "tslateffectslib.mixins.json"
+      "tslateffectslib.mixins.json",
+      "tslateffectslib.fabric.mixins.json"
     ],
+  
     "depends": {
       "fabricloader": ">=0.14",
       "minecraft": "1.19.2",

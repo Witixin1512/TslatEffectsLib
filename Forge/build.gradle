@@ -94,7 +94,7 @@ mixin {
     add sourceSets.main, "${mod_name}.refmap.json"
 
     config "${mod_name}.mixins.json"
-    //config "${mod_name}.forge.mixins.json"
+    config "${mod_name}.forge.mixins.json"
 }
 
 
