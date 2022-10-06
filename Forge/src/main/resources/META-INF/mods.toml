@@ -1,4 +1,4 @@
-modLoader="javafml"
+modLoader="lowcode"
 loaderVersion="[43,)"
 license="MPL 2.0"
 issueTrackerURL="https://github.com/Tslat/TslatEffectsLib/issues"
