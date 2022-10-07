@@ -3,7 +3,7 @@ plugins {
     id 'fabric-loom' version '1.+'
 }
 
-archivesBaseName = "${mod_name}-common-${minecraft_version}"
+archivesBaseName = "${built_name}-Common-${minecraft_version}"
 
 repositories {
     maven {

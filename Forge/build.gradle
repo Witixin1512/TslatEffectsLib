@@ -20,7 +20,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 
-archivesBaseName = "${mod_name}-forge-${minecraft_version}"
+archivesBaseName = "${built_name}-Forge-${minecraft_version}"
 
 minecraft {
     accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
