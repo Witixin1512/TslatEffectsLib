@@ -77,6 +77,9 @@ subprojects {
 
     task assembleSubProjects() {
         var props = rootProject.getProperties()
+        if (!rootProject.file("buildOutput").exists()){
+            rootProject.file("buildOutput").mkdir()
+        }
         var finalProjectName = project.getName().substring(0, 1).toUpperCase() + project.getName().substring(1)
         var fileName = "${props.get("built_name")}-${finalProjectName}-${minecraft_version}-${props.get("version")}.jar"
         var sourceFileName = "${props.get("built_name")}-${finalProjectName}-${minecraft_version}-${props.get("version")}-sources.jar"
