@@ -10,8 +10,8 @@
         "common.PlayerMixin"
     ],
     "client": [
-        "EffectRenderingInventoryScreenMixin",
-        "GameRendererMixin"
+        "client.EffectRenderingInventoryScreenMixin",
+        "client.GameRendererMixin"
     ],
     "injectors": {
       "defaultRequire": 1
