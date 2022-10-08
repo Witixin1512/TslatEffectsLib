@@ -21,7 +21,7 @@ public class PlayerMixin {
 			),
 			index = 1
 	)
-	public float modifyDamage(DamageSource damageSource, float damage) {
+	public float tslateffectlib_modifyDamage(DamageSource damageSource, float damage) {
 		if (!damageSource.isBypassMagic()) {
 			LivingEntity victim = (LivingEntity)(Object)this;
 
@@ -48,12 +48,12 @@ public class PlayerMixin {
 			),
 			cancellable = true
 	)
-	public void checkCancellation(DamageSource damageSource, float damage, CallbackInfoReturnable<Boolean> callback) {
-		if (checkEffectAttackCancellation((LivingEntity)(Object)this, damageSource, damage))
+	public void tslateffectlib_checkCancellation(DamageSource damageSource, float damage, CallbackInfoReturnable<Boolean> callback) {
+		if (tslateffectlib_checkEffectAttackCancellation((LivingEntity)(Object)this, damageSource, damage))
 			callback.setReturnValue(false);
 	}
 
-	private boolean checkEffectAttackCancellation(LivingEntity victim, DamageSource damageSource, float damage) {
+	private boolean tslateffectlib_checkEffectAttackCancellation(LivingEntity victim, DamageSource damageSource, float damage) {
 		for (MobEffectInstance instance : victim.getActiveEffects()) {
 			if (instance.getEffect() instanceof ExtendedMobEffect extendedMobEffect)
 				if (!extendedMobEffect.beforeIncomingAttack(victim, instance, damageSource, damage))

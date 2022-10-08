@@ -37,7 +37,7 @@ public abstract class MobEffectInstanceMixin implements ExtendedMobEffectHolder 
 					target = "Lnet/minecraft/world/effect/MobEffect;applyEffectTick(Lnet/minecraft/world/entity/LivingEntity;I)V"
 			)
 	)
-	public void tickEffect(MobEffect effect, LivingEntity entity, int amplifier) {
+	public void tslateffectlib_tickEffect(MobEffect effect, LivingEntity entity, int amplifier) {
 		if (effect instanceof ExtendedMobEffect extendedEffect) {
 			extendedEffect.tick(entity, (MobEffectInstance)(Object)this, amplifier);
 		}
@@ -53,7 +53,7 @@ public abstract class MobEffectInstanceMixin implements ExtendedMobEffectHolder 
 					target = "Lnet/minecraft/world/effect/MobEffect;isDurationEffectTick(II)Z"
 			)
 	)
-	public boolean checkVanillaEffectTick(MobEffect effect, int duration, int amplifier) {
+	public boolean tslateffectlib_checkVanillaEffectTick(MobEffect effect, int duration, int amplifier) {
 		return !(effect instanceof ExtendedMobEffect) && effect.isDurationEffectTick(duration, amplifier);
 	}
 
@@ -61,7 +61,7 @@ public abstract class MobEffectInstanceMixin implements ExtendedMobEffectHolder 
 			method = "tick",
 			at = @At(value = "HEAD")
 	)
-	public void checkEffectTick(LivingEntity entity, Runnable runnable, CallbackInfoReturnable<Boolean> callback) {
+	public void tslateffectlib_checkEffectTick(LivingEntity entity, Runnable runnable, CallbackInfoReturnable<Boolean> callback) {
 		if (this.duration > 0 && this.getEffect() instanceof ExtendedMobEffect extendedEffect && extendedEffect.shouldTickEffect((MobEffectInstance)(Object)this, entity, this.duration, this.amplifier))
 			applyEffect(entity);
 	}

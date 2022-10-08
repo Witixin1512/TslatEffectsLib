@@ -36,11 +36,11 @@ public class GameRendererMixin {
 					shift = At.Shift.AFTER
 			)
 	)
-	public void renderEffectOverlays(float partialTicks, long nanoTime, boolean renderLevel, CallbackInfo callback) {
-		doExtendedEffectRenders(this.minecraft.player, partialTicks);
+	public void tslateffectlib_renderEffectOverlays(float partialTicks, long nanoTime, boolean renderLevel, CallbackInfo callback) {
+		tslateffectlib_doExtendedEffectRenders(this.minecraft.player, partialTicks);
 	}
 
-	private void doExtendedEffectRenders(LocalPlayer player, float partialTicks) {
+	private void tslateffectlib_doExtendedEffectRenders(LocalPlayer player, float partialTicks) {
 		PoseStack poseStack = new PoseStack();
 
 		for (MobEffectInstance instance : player.getActiveEffects()) {

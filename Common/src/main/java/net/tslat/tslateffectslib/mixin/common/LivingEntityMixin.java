@@ -43,7 +43,7 @@ public abstract class LivingEntityMixin {
 			),
 			index = 1
 	)
-	public float modifyDamage(DamageSource damageSource, float damage) {
+	public float tslateffectlib_modifyDamage(DamageSource damageSource, float damage) {
 		if (!damageSource.isBypassMagic()) {
 			LivingEntity victim = (LivingEntity)(Object)this;
 
@@ -70,12 +70,12 @@ public abstract class LivingEntityMixin {
 			),
 			cancellable = true
 	)
-	public void checkCancellation(DamageSource damageSource, float damage, CallbackInfoReturnable<Boolean> callback) {
-		if (checkEffectAttackCancellation((LivingEntity)(Object)this, damageSource, damage))
+	public void tslateffectlib_checkCancellation(DamageSource damageSource, float damage, CallbackInfoReturnable<Boolean> callback) {
+		if (tslateffectlib_checkEffectAttackCancellation((LivingEntity)(Object)this, damageSource, damage))
 			callback.setReturnValue(false);
 	}
 
-	private boolean checkEffectAttackCancellation(LivingEntity victim, DamageSource damageSource, float damage) {
+	private boolean tslateffectlib_checkEffectAttackCancellation(LivingEntity victim, DamageSource damageSource, float damage) {
 		for (MobEffectInstance instance : victim.getActiveEffects()) {
 			if (instance.getEffect() instanceof ExtendedMobEffect extendedMobEffect)
 				if (!extendedMobEffect.beforeIncomingAttack(victim, instance, damageSource, damage))
@@ -94,11 +94,11 @@ public abstract class LivingEntityMixin {
 			),
 			remap = false
 	)
-	public void afterAttack(DamageSource damageSource, float damage, CallbackInfo callback) {
-		handlePostAttack((LivingEntity)(Object)this, damageSource, damage);
+	public void tslateffectlib_afterAttack(DamageSource damageSource, float damage, CallbackInfo callback) {
+		tslateffectlib_handlePostAttack((LivingEntity)(Object)this, damageSource, damage);
 	}
 
-	private void handlePostAttack(LivingEntity victim, DamageSource damageSource, float damage) {
+	private void tslateffectlib_handlePostAttack(LivingEntity victim, DamageSource damageSource, float damage) {
 		for (MobEffectInstance instance : victim.getActiveEffects()) {
 			if (instance.getEffect() instanceof ExtendedMobEffect extendedMobEffect)
 				extendedMobEffect.afterIncomingAttack(victim, instance, damageSource, damage);
@@ -119,7 +119,7 @@ public abstract class LivingEntityMixin {
 					target = "Lnet/minecraft/world/entity/LivingEntity;onEffectAdded(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)V"
 			)
 	)
-	public void onAdded(LivingEntity entity, MobEffectInstance effectInstance, Entity source) {
+	public void tslateffectlib_onAdded(LivingEntity entity, MobEffectInstance effectInstance, Entity source) {
 		if (effectInstance.getEffect() instanceof ExtendedMobEffect extendedEffect)
 			extendedEffect.onApplication(effectInstance, source, entity, effectInstance.getAmplifier());
 
@@ -133,7 +133,7 @@ public abstract class LivingEntityMixin {
 					target = "Lnet/minecraft/world/effect/MobEffectInstance;update(Lnet/minecraft/world/effect/MobEffectInstance;)Z"
 			)
 	)
-	public boolean onUpdate(MobEffectInstance existingEffect, MobEffectInstance newEffect) {
+	public boolean tslateffectlib_onUpdate(MobEffectInstance existingEffect, MobEffectInstance newEffect) {
 		if (existingEffect.getEffect() instanceof ExtendedMobEffect extendedEffect)
 			newEffect = extendedEffect.onReapplication(existingEffect, newEffect, (LivingEntity)(Object)this);
 
@@ -147,7 +147,7 @@ public abstract class LivingEntityMixin {
 					target = "Lnet/minecraft/world/entity/LivingEntity;onEffectRemoved(Lnet/minecraft/world/effect/MobEffectInstance;)V"
 			)
 	)
-	public MobEffectInstance onRemoval(MobEffectInstance effectInstance) {
+	public MobEffectInstance tslateffectlib_onRemoval(MobEffectInstance effectInstance) {
 		if (effectInstance.getEffect() instanceof ExtendedMobEffect extendedEffect)
 			extendedEffect.onRemoval(effectInstance, (LivingEntity)(Object)this);
 
@@ -161,7 +161,7 @@ public abstract class LivingEntityMixin {
 			),
 			cancellable = true
 	)
-	public void canApplyEffect(MobEffectInstance effectInstance, CallbackInfoReturnable<Boolean> callback) {
+	public void tslateffectlib_canApplyEffect(MobEffectInstance effectInstance, CallbackInfoReturnable<Boolean> callback) {
 		if (effectInstance.getEffect() instanceof ExtendedMobEffect extendedEffect && !extendedEffect.canApply((LivingEntity)(Object)this, effectInstance))
 			callback.setReturnValue(false);
 
@@ -179,12 +179,12 @@ public abstract class LivingEntityMixin {
 					value = "HEAD"
 			)
 	)
-	public void onFoodConsumption(ItemStack food, Level level, LivingEntity entity, CallbackInfo callback) {
+	public void tslateffectlib_onFoodConsumption(ItemStack food, Level level, LivingEntity entity, CallbackInfo callback) {
 		if (food.isEdible())
-			checkEffectCuring(food, entity);
+			tslateffectlib_checkEffectCuring(food, entity);
 	}
 
-	private void checkEffectCuring(ItemStack food, LivingEntity entity) {
+	private void tslateffectlib_checkEffectCuring(ItemStack food, LivingEntity entity) {
 		if (entity.getActiveEffectsMap().isEmpty())
 			return;
 
