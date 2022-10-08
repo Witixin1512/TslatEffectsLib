@@ -84,7 +84,12 @@ subprojects {
         var fileName = "${props.get("built_name")}-${finalProjectName}-${minecraft_version}-${props.get("version")}.jar"
         var sourceFileName = "${props.get("built_name")}-${finalProjectName}-${minecraft_version}-${props.get("version")}-sources.jar"
         project.file("build/libs/${fileName}").renameTo(rootProject.file("buildOutput/${fileName}"))
-        project.file("build/libs/${sourceFileName}").renameTo(rootProject.file("buildOutput/${sourceFileName}"))
+        if (project.getName().equals("Forge")){
+            project.file("build/libs/${sourceFileName}").renameTo(rootProject.file("buildOutput/${sourceFileName}"))
+        }
+        else {
+            project.file("build/devlibs/${sourceFileName}").renameTo(rootProject.file("buildOutput/${sourceFileName}"))
+        }
     }
 
     assembleSubProjects.group = "build"

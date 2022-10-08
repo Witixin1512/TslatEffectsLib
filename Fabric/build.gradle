@@ -57,7 +57,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main)
+    source(project(":Common").sourceSets.main.allSource)
 }
 
 sourcesJar {

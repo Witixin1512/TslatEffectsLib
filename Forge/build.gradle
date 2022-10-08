@@ -89,7 +89,7 @@ processResources {
     from project(":Common").sourceSets.main.resources
 }
 
-tasks.named("sourcesJar"){
+sourcesJar {
     from project(":Common").sourceSets.main.allSource
 }
 
